@@ -8,12 +8,21 @@ def solution():
 
     for word in words:
         if len(word) >= M:
-            word_dict[word] += 1
+            word_dict[word] += 1 
     # 리스트의 각 단어에 대해, 단어의 길이가 M 이상일 경우 해당 단어의 빈도수를 증가
     sorted_words = sorted(word_dict.items(), key=lambda x: (-x[1], -len(x[0]), x[0]))
     # 빈도수가 높은 순, 단어의 길이가 긴 순, 알파벳 순서가 앞선 순서로 정렬
 
     for word in sorted_words:
-        print(word[0])
+        print(word[0]) # 키값만 출력.
 
 solution()
+
+
+
+# collections 사용하지 않을 경우
+word_dict = {}
+for word in words:
+    if word not in word_dict:
+        word_dict[word] = 0
+    word_dict[word] += 1
