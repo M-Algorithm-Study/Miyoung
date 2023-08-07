@@ -1,22 +1,23 @@
-N, M = map(int, input().split())
-numbers = sorted(list(map(int, input().split())))
 
-visited = [False] * N  # 숫자를 방문했는지를 체크하는 리스트
-sequence = []  # 현재까지 선택된 숫자들의 시퀀스
 
-def backtrack(depth):
-    if depth == M:  # 원하는 길이만큼 숫자를 선택했다면 출력
-        print(' '.join(map(str, sequence)))
+N, M = map(int, input().split()) # N개의 숫자, M(수열의 길이)
+numbers = sorted(list(map(int, input().split()))) # N개의 숫자를 입력 > 리스트에 저장 > 오름차순 정렬
+
+visited = [False] * N  # 방문표시 ( 현재 조합에 사용되었는지 여부)
+sequence = []  # 숫자 조합 저장
+
+def backtrack(depth): # 깊이를 매개변수로 받아 깊이에 맞는 순서를 선택
+    if depth == M:  
+        print(' '.join(map(str, sequence))) # depth(깊이)가 M(수열의 길이)에 도달하면 squence(숫자조합)을 출력하고 종료
         return
 
     for i in range(N):
-        if not visited[i]:  # 해당 숫자를 아직 방문하지 않았다면
-            visited[i] = True  # 숫자 방문 표시
-            sequence.append(numbers[i])  # 시퀀스에 숫자 추가
-            backtrack(depth + 1)  # 다음 숫자 선택을 위한 재귀 호출
+        if not visited[i]:  # 방문하지 않은 숫자
+            visited[i] = True  # 조합에 사용되었다면 방문처리
+            sequence.append(numbers[i])  # 숫자 조합에 추가
+            backtrack(depth + 1)  # 재귀호출 > 다음 깊이의 숫자를 선택.
 
-            # 백트래킹
-            visited[i] = False
-            sequence.pop()
+            visited[i] = False # 방문처리 초기화
+            sequence.pop()     # 숫자 조합 초기화
 
 backtrack(0)
