@@ -1,6 +1,6 @@
 from collections import deque
 
-n, m = map(int, input().split()) 
+n, m = map(int, input().split()) # 모눈종이 크기
 board = [list(map(int, input().split())) for _ in range(n)] # 치즈 위치
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1] 
@@ -9,7 +9,7 @@ def bfs(): # 외부의 공기와 접촉하는 치즈 부분을 찾는 함수
     q = deque([(0, 0)]) # 시작점
     v = [[False] * m for _ in range(n)] # 방문 2차원 리스트
     v[0][0] = True # 시작점은 방문 체크
-    board[0][0] = -1 # 공기 접촉되는 부분이므로 -1
+    board[0][0] = -1 # 가장자리는 공기 접촉되는 부분이므로 -1
     
     while q: 
         x, y = q.popleft()
@@ -23,7 +23,7 @@ def bfs(): # 외부의 공기와 접촉하는 치즈 부분을 찾는 함수
 
 def melt(): # 외부 공기와 2면 이상 접촉하는 치즈를 찾아 녹이는 함수
     melting = []
-    for i in range(n):     # 모ㄴ 방향을 순회하며 치즈 찾기
+    for i in range(n):     # 모든 방향을 순회하며 치즈 찾기
         for j in range(m): 
             if board[i][j] == 1: # 현재 위치가 치즈라면
                 cnt = 0
