@@ -21,7 +21,9 @@ def bfs(x, y, size): # 아기상어 좌표, 사이즈
                     queue.append((nx, ny)) # 위지정보 업데이트 
                 # 자신의 크기보다 작은 물고기는 먹고 같으면 지나간다.
                 if 0 < matrix[nx][ny] < size: # 크기가 작으면 
-                    fishes.append((nx, ny, v[nx][ny] - 1)) # 
+                    fishes.append((nx, ny, v[nx][ny] - 1))
+                    # 물고기 위치와 아기 상어로부터 그 물고기까지의 거리
+                    # (초기 아기상어 위치 저장시 시작점 방문처리로 1을 더했기때문에 -1 해준다.)
     return fishes
 
 
