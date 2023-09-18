@@ -34,7 +34,7 @@ def bfs(x, y):
 
     return count
 
-areas = []
+areas = [] # 영역저장
 
 for i in range(M):
     for j in range(N):
